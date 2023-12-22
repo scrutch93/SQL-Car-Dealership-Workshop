@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS cardealerships; 
+
+CREATE DATABASE IF NOT EXISTS cardealerships;
+
+use cardealerships;
+
 CREATE TABLE dealerships (
     dealership_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50),
@@ -6,8 +12,8 @@ CREATE TABLE dealerships (
 );
 
 CREATE TABLE vehicles ( 
-    vehicle_id INT AUTO_INCREMENT PRIMARY KEY,
-    VIN VARCHAR(17),
+    vehicle_id INT,
+    VIN VARCHAR(17) PRIMARY KEY,
     make VARCHAR(50),
     model VARCHAR(50),
     year INT,
@@ -28,6 +34,7 @@ CREATE TABLE inventory (
 CREATE TABLE sales_contracts (
     contract_id INT AUTO_INCREMENT PRIMARY KEY,
     vehicle_id INT,
+    VIN VARCHAR(17),
     buyer_name VARCHAR(100),
     seller_name VARCHAR(100),
     sale_date DATE,
@@ -35,7 +42,8 @@ CREATE TABLE sales_contracts (
     payment_method VARCHAR(50),
     payment_due_date DATE,
     payment_status VARCHAR(20),
-    salesperson_id INT
+    salesperson_id INT,
+    FOREIGN KEY(VIN) REFERENCES vehicles (VIN)
 );
 
 CREATE TABLE lease_contracts (

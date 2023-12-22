@@ -1,8 +1,5 @@
 USE CarDealerships;
 
-ALTER TABLE inventory
-MODIFY COLUMN VIN VARCHAR(17);
-
 -- Insert data into dealerships table
 INSERT INTO dealerships (name, address, phone)
 VALUES
@@ -25,11 +22,11 @@ VALUES
     (3, 'GHI789JKL01234567');
 
 -- Insert data into sales_contracts table
-INSERT INTO sales_contracts (vehicle_id, buyer_name, seller_name, sale_date, sale_price, payment_method, payment_due_date, payment_status, salesperson_id)
+INSERT INTO sales_contracts (VIN, vehicle_id, buyer_name, seller_name, sale_date, sale_price, payment_method, payment_due_date, payment_status, salesperson_id)
 VALUES
-    (1, 'John Doe', 'XYZ Auto Dealers', '2023-01-15', 25000.00, 'Credit Card', '2023-02-15', 'Pending', 101),
-    (2, 'Jane Smith', 'ABC Car Sales', '2023-02-20', 30000.00, 'Cash', '2023-03-20', 'Paid', 102),
-    (3, 'Bob Johnson', '123 Motors', '2023-03-10', 20000.00, 'Financing', '2023-04-10', 'Pending', 103);
+    ('ABC123XYZ45678901',1, 'John Doe', 'XYZ Auto Dealers', '2023-01-15', 25000.00, 'Credit Card', '2023-02-15', 'Pending', 101),
+    ('DEF456UVW78901234',2, 'Jane Smith', 'ABC Car Sales', '2023-02-20', 30000.00, 'Cash', '2023-03-20', 'Paid', 102),
+    ('GHI789JKL01234567',3, 'Bob Johnson', '123 Motors', '2023-03-10', 20000.00, 'Financing', '2023-04-10', 'Pending', 103);
 
 -- Insert data into lease_contracts table
 INSERT INTO lease_contracts (vehicle_id, lessee_name, lease_start_date, lease_end_date, monthly_payment, payment_due_date, payment_status, salesperson_id)
